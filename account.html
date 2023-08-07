@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Dashboard</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .account-info {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .volume-meter {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .volume iframe {
+    border: none;
+    width: 100%;
+    max-width: 450px;
+    height: 260px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .glowing-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+  }
+
+  .glowing-button:hover {
+    animation: glowing 1500ms infinite;
+  }
+
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(76, 175, 80, 0.9);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+    }
+  }
+
+  .recorded-values {
+    text-align: center;
+  }
+
+  .recorded-values h2 {
+    margin-bottom: 10px;
+  }
+
+  .value-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .value-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Account Dashboard</h1>
+    </div>
+    <div class="account-info">
+      <h2>Account Name: Your Account Name</h2>
+      <p>Account Number: XXXX-XXXX-XXXX</p>
+    </div>
+    <div class="volume-meter">
+      <h2>Live Volume Reading</h2>
+      <div class="volume">
+        <iframe id="volumeMeter" src="https://thingspeak.com/channels/2234528/widgets/693908"></iframe>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2234528/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+      </div>
+    </div>
+    <div class="actions">
+        <button class="glowing-button" onclick="goToPaymentPage()">Make Payment</button>
+        <button class="glowing-button" onclick="goToInvoicePage()">Check Invoice</button>
+    </div>
+    <div class="recorded-values">
+      <h2>Recorded Values</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Value (liters)</th>
+            <th>Converted Value (Kwacha)</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody class="value-list" id="valueList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function goToPaymentPage() {
+      window.location.href = "pay.html"; // Replace with the actual URL of your payment page
+    }
+
+    function goToInvoicePage() {
+      window.location.href = "invoice.html"; // Replace with the actual URL of your invoice page
+    }
+  </script>
+</body>
+</html>
